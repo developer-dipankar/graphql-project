@@ -1,26 +1,15 @@
-const {Person, PersonType} = require("./models/Person");
 const {GraphQLObjectType, GraphQLID, GraphQLSchema, GraphQLList, GraphQLNonNull} = require("graphql");
-
+const {UserList, UserDetails} = require('./graphQLSchema/UserType');
+const {BlogList, findBlog} = require('./graphQLSchema/BlogType');
 
 const graphQLSchema = new GraphQLSchema({
     query: new GraphQLObjectType({
         name: "Query",
         fields: {
-            people: {
-                type: GraphQLList(PersonType),
-                resolve: (root, args, context, info) => {
-                    return Person.find().exec();
-                }
-            },
-            person: {
-                type: PersonType,
-                args: {
-                    id: { type: GraphQLNonNull(GraphQLID) }
-                },
-                resolve: (root, args, context, info) => {
-                    return Person.findById(args.id).exec();
-                }
-            }
+            users: UserList,
+            user: UserDetails,
+            blogs: BlogList,
+            blog: findBlog
         }
     })
 });

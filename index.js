@@ -16,5 +16,5 @@ app.use("/graphql-dev", ExpressGraphQL({
 }));
 
 app.listen(3000, () => {
-    console.log("Listening at :3000...");
+    console.log("Listening at :http://localhost:3000...");
 });
