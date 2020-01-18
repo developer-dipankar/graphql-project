@@ -6,6 +6,17 @@ const Person = Mongoose.model("person", {
     lastname: String
 });
 
+
+
+// var per = new Person({firstname: "Dipankar", lastname: "Naskar"});
+// per.save((err, res) => {
+//     console.log(err, res);
+// })
+
+// Person.find({}, (err, docs) => {
+//     console.log(err, docs);
+// })
+
 const PersonType = new GraphQLObjectType({
     name: "Person",
     fields: {

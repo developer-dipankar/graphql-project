@@ -2,8 +2,11 @@ const Express = require("express");
 const ExpressGraphQL = require("express-graphql");
 const Mongoose = require("mongoose");
 const app = Express();
+require('dotenv').config()
 
-Mongoose.connect("mongodb://localhost/testgraphql");
+Mongoose.connect(process.env.MONGO_CONN,
+    { useNewUrlParser: true , useUnifiedTopology: true}
+);
 
 const {graphQLSchema} = require("./graphqlSchema");
 
